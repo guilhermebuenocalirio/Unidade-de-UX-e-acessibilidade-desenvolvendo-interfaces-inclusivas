@@ -1,0 +1,283 @@
+
+    /* Reset e Variáveis para Acessibilidade */
+    :root {
+      --cor-fundo: #F4F7F9;
+      --cor-cartao: #FFFFFF;
+      --cor-texto: #111111;
+      --cor-primaria: #004D40;
+      --cor-primaria-hover: #00332C;
+      --cor-destaque: #D84315;
+      --cor-alerta: #FFF3E0;
+      --cor-borda: #B0BEC5;
+      --fonte-tamanho-base: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: var(--fonte-tamanho-base);
+      line-height: 1.6;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      padding-bottom: 50px;
+    }
+
+    /* Acessibilidade: Modo de Alto Contraste via Checkbox */
+    #alto-contraste:checked ~ .container-aplicativo {
+      --cor-fundo: #000000;
+      --cor-cartao: #1A1A1A;
+      --cor-texto: #FFFFFF;
+      --cor-primaria: #FFFF00;
+      --cor-primaria-hover: #FFD700;
+      --cor-destaque: #FF5252;
+      --cor-alerta: #2A1A00;
+      --cor-borda: #FFFFFF;
+    }
+
+    #alto-contraste:checked ~ .container-aplicativo nav label {
+      color: #000000;
+      background-color: #FFFF00;
+    }
+
+    #alto-contraste:checked ~ .container-aplicativo .banner-destaque {
+      background-color: #1A1A1A;
+      border: 3px solid #FFFF00;
+    }
+
+    #alto-contraste:checked ~ .container-aplicativo .botao-emergencia {
+      background-color: #FF5252;
+      color: #FFFFFF;
+      border: 3px solid #FFFFFF;
+    }
+
+    /* Esconder os inputs controladores */
+    .entrada-controle {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Contêiner Principal */
+    .container-aplicativo {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Barra Superior de Acessibilidade */
+    .barra-acessibilidade {
+      background-color: var(--cor-cartao);
+      border: 2px solid var(--cor-borda);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .botao-acessivel {
+      display: inline-block;
+      background-color: #E0E0E0;
+      color: #000000;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 2px solid #000000;
+      text-align: center;
+    }
+
+    /* Banner Principal (Início) */
+    .banner-destaque {
+      background-color: var(--cor-primaria);
+      color: #FFFFFF;
+      padding: 32px 20px;
+      border-radius: 16px;
+      text-align: center;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    #alto-contraste:checked ~ .container-aplicativo .banner-destaque h1,
+    #alto-contraste:checked ~ .container-aplicativo .banner-destaque p {
+      color: #FFFF00;
+    }
+
+    .banner-destaque h1 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .banner-destaque p {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+
+    /* Botão de Ajuda Funcional */
+    .botao-emergencia {
+      display: inline-block;
+      background-color: var(--cor-destaque);
+      color: #FFFFFF;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 16px 28px;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .botao-emergencia:hover {
+      transform: scale(1.03);
+    }
+
+    /* Navegação por Abas Grandes */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .botao-aba {
+      flex: 1 1 180px;
+      background-color: var(--cor-cartao);
+      color: var(--cor-texto);
+      border: 3px solid var(--cor-primaria);
+      padding: 16px 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    /* Seleção de Abas via CSS */
+    #aba-inicio:checked ~ .container-aplicativo nav label[for="aba-inicio"],
+    #aba-dicas:checked ~ .container-aplicativo nav label[for="aba-dicas"],
+    #aba-direitos:checked ~ .container-aplicativo nav label[for="aba-direitos"],
+    #aba-golpes:checked ~ .container-aplicativo nav label[for="aba-golpes"] {
+      background-color: var(--cor-primaria);
+      color: #FFFFFF;
+    }
+
+    /* Ocultar/Exibir Conteúdo */
+    .conteudo-aba {
+      display: none;
+      background-color: var(--cor-cartao);
+      border: 3px solid var(--cor-borda);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    #aba-inicio:checked ~ .container-aplicativo #conteudo-inicio,
+    #aba-dicas:checked ~ .container-aplicativo #conteudo-dicas,
+    #aba-direitos:checked ~ .container-aplicativo #conteudo-direitos,
+    #aba-golpes:checked ~ .container-aplicativo #conteudo-golpes {
+      display: block;
+    }
+
+    /* Títulos e Cartões */
+    h2 {
+      color: var(--cor-primaria);
+      font-size: 1.7rem;
+      margin-bottom: 20px;
+      border-bottom: 3px solid var(--cor-borda);
+      padding-bottom: 8px;
+    }
+
+    #alto-contraste:checked ~ .container-aplicativo h2 {
+      color: #FFFF00;
+    }
+
+    .cartao-dica {
+      background-color: rgba(0, 0, 0, 0.03);
+      border-left: 8px solid var(--cor-primaria);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    #alto-contraste:checked ~ .container-aplicativo .cartao-dica {
+      background-color: #262626;
+      border-left-color: #FFFF00;
+    }
+
+    .cartao-alerta {
+      background-color: var(--cor-alerta);
+      border-left: 8px solid var(--cor-destaque);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    #alto-contraste:checked ~ .container-aplicativo .cartao-alerta {
+      background-color: #330000;
+      border-left-color: #FF5252;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
+
+    /* Seção de Ajuda Rápida e Telefones */
+    .secao-ajuda {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(216, 67, 21, 0.08);
+      border: 2px dashed var(--cor-destaque);
+      border-radius: 12px;
+    }
+
+    .botao-ligar {
+      display: block;
+      width: 100%;
+      background-color: var(--cor-destaque);
+      color: #FFFFFF;
+      text-decoration: none;
+      text-align: center;
+      padding: 18px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      body {
+        font-size: 18px;
+      }
+      .botao-aba {
+        flex: 1 1 100%;
+      }
+      .banner-destaque h1 {
+        font-size: 1.6rem;
+      }
+      .botao-emergencia {
+        width: 100%;
+        display: block;
+      }
